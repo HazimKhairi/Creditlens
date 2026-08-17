@@ -1,16 +1,4 @@
-"""
-CreditLens MY, loan application review system.
 
-A credit officer opens a pending application, sees the applicant's profile and a
-risk score, and records a decision. Declines produce an adverse action notice, which
-is the letter the applicant is legally entitled to receive.
-
-The scoring path here is identical to CreditLens.ipynb. The model, the calibrator and
-every scorecard setting are loaded from artifacts/ rather than rewritten, so the app
-and the notebook can never quietly disagree.
-
-Run:  streamlit run app.py
-"""
 
 import json
 import os
@@ -26,9 +14,7 @@ ART = os.path.join(os.path.dirname(os.path.abspath(__file__)), "artifacts")
 st.set_page_config(page_title="CreditLens MY", page_icon=None, layout="wide")
 
 
-# ---------------------------------------------------------------------------
 # Load everything the notebook produced
-# ---------------------------------------------------------------------------
 @st.cache_resource
 def load_artifacts():
     needed = ["creditlens_lgbm.joblib", "creditlens_calibrator.joblib",
@@ -67,11 +53,9 @@ REASON_TEXT = meta.get("adverse_action", {})
 NOT_A_REASON = set(meta.get("non_actionable_features", []))
 
 
-# ---------------------------------------------------------------------------
 # Scoring, identical to the notebook
-# ---------------------------------------------------------------------------
 def align(frame):
-    """Restore the exact dtypes and column order the model was trained with."""
+    """Restore the dtypes and column order the model was trained with."""
     frame = frame.copy()
     for col, cats in meta.get("categorical_levels", {}).items():
         if col in frame.columns:
@@ -99,13 +83,7 @@ def score_everyone():
 ALL_SCORES, ALL_PROBA = score_everyone()
 
 
-# ---------------------------------------------------------------------------
 # Demo identities
-#
-# The Home Credit dataset is anonymous, so the queue would otherwise be a list of
-# numbers. Names are generated from the applicant id so they stay consistent between
-# reloads. They are invented for the demo and belong to nobody.
-# ---------------------------------------------------------------------------
 FIRST = ["Ahmad", "Nurul", "Siti", "Muhammad", "Aina", "Faizal", "Hafiz", "Zulkifli",
          "Lim", "Tan", "Wong", "Chong", "Rajesh", "Kavitha", "Suresh", "Priya",
          "Aisyah", "Danial", "Farah", "Iskandar", "Mei Ling", "Wei Jie", "Anand"]
@@ -135,9 +113,7 @@ def get(row, column, default=np.nan):
     return row[column] if column in row.index else default
 
 
-# ---------------------------------------------------------------------------
 # Queue
-# ---------------------------------------------------------------------------
 @st.cache_data
 def build_queue():
     rows = []
@@ -184,9 +160,7 @@ tab_queue, tab_review, tab_portfolio = st.tabs(
     ["Application queue", "Review application", "Portfolio"])
 
 
-# ---------------------------------------------------------------------------
 # Tab 1, the queue
-# ---------------------------------------------------------------------------
 with tab_queue:
     st.subheader("Pending applications")
 
@@ -222,9 +196,7 @@ with tab_queue:
     st.info("Open the Review application tab to work a file.")
 
 
-# ---------------------------------------------------------------------------
 # Tab 2, the case file
-# ---------------------------------------------------------------------------
 with tab_review:
     options = QUEUE["Reference"] + "  |  " + QUEUE["Applicant"]
     choice = st.selectbox("Application", options, index=0)
@@ -407,9 +379,7 @@ with tab_review:
                        "It is judged on the whole portfolio, not one file.")
 
 
-# ---------------------------------------------------------------------------
 # Tab 3, management view
-# ---------------------------------------------------------------------------
 with tab_portfolio:
     st.subheader("Portfolio at the current cutoff")
 
