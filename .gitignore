@@ -1,0 +1,18 @@
+# Kaggle data and anything derived from it that redistributes rows
+data/
+artifacts/
+*.parquet
+*.csv
+
+# Earlier drafts, kept locally only
+.old/
+
+# Python
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.venv/
+venv/
+
+# OS
+.DS_Store

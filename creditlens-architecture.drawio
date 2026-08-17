@@ -1,0 +1,98 @@
+<mxfile host="app.diagrams.net" type="device">
+  <diagram name="CreditLens" id="creditlens-arch">
+    <mxGraphModel dx="1024" dy="720" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="620" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- AWS Cloud boundary -->
+        <mxCell id="cloud" value="AWS Cloud  ap-southeast-1" style="points=[[0,0],[0.25,0],[0.5,0],[0.75,0],[1,0],[1,0.25],[1,0.5],[1,0.75],[1,1],[0.75,1],[0.5,1],[0.25,1],[0,1],[0,0.75],[0,0.5],[0,0.25]];outlineConnect=0;gradientColor=none;html=1;whiteSpace=wrap;fontSize=12;fontStyle=0;container=0;pointerEvents=0;collapsible=0;recursiveResize=0;shape=mxgraph.aws4.group;grIcon=mxgraph.aws4.group_aws_cloud_alt;strokeColor=#232F3E;fillColor=none;verticalAlign=top;align=left;spacingLeft=30;fontColor=#232F3E;dashed=0;" vertex="1" parent="1">
+          <mxGeometry x="160" y="60" width="800" height="400" as="geometry" />
+        </mxCell>
+
+        <!-- Dataset (external) -->
+        <mxCell id="dataset" value="Dataset&#10;Kaggle · 4 tables" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F2F2F2;strokeColor=#6C655C;fontColor=#232F3E;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="40" y="300" width="90" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- 1 S3 raw -->
+        <mxCell id="s3raw" value="Amazon S3&#10;raw CSVs" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#7AA116;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.s3;" vertex="1" parent="1">
+          <mxGeometry x="240" y="120" width="78" height="78" as="geometry" />
+        </mxCell>
+
+        <!-- 2 Glue -->
+        <mxCell id="glue" value="AWS Glue&#10;PySpark ETL" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#8C4FFF;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.glue;" vertex="1" parent="1">
+          <mxGeometry x="440" y="120" width="78" height="78" as="geometry" />
+        </mxCell>
+
+        <!-- 3 S3 features -->
+        <mxCell id="s3feat" value="S3 features&#10;Parquet" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#7AA116;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.s3;" vertex="1" parent="1">
+          <mxGeometry x="640" y="120" width="78" height="78" as="geometry" />
+        </mxCell>
+
+        <!-- 6 SageMaker notebook -->
+        <mxCell id="notebook" value="SageMaker Studio&#10;notebook" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#01A88D;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.sagemaker;" vertex="1" parent="1">
+          <mxGeometry x="240" y="300" width="78" height="78" as="geometry" />
+        </mxCell>
+
+        <!-- 4 Train -->
+        <mxCell id="train" value="Train · LightGBM&#10;AUC 0.77" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#01A88D;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.sagemaker;" vertex="1" parent="1">
+          <mxGeometry x="440" y="300" width="78" height="78" as="geometry" />
+        </mxCell>
+
+        <!-- 5 Model artifacts -->
+        <mxCell id="artifacts" value="Model artifacts&#10;score · SHAP" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#7AA116;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.s3;" vertex="1" parent="1">
+          <mxGeometry x="640" y="300" width="78" height="78" as="geometry" />
+        </mxCell>
+
+        <!-- 7 Deploy endpoint (planned) -->
+        <mxCell id="deploy" value="Endpoint&#10;(planned)" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#01A88D;strokeColor=#ffffff;dashed=0;opacity=50;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.sagemaker;" vertex="1" parent="1">
+          <mxGeometry x="820" y="120" width="78" height="78" as="geometry" />
+        </mxCell>
+
+        <!-- 8 Model Monitor (planned) -->
+        <mxCell id="monitor" value="Model Monitor&#10;(planned)" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#01A88D;strokeColor=#ffffff;dashed=0;opacity=50;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.sagemaker;" vertex="1" parent="1">
+          <mxGeometry x="820" y="300" width="78" height="78" as="geometry" />
+        </mxCell>
+
+        <!-- 9 API Gateway (planned, external) -->
+        <mxCell id="apigw" value="API Gateway&#10;(planned)" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#E7157B;strokeColor=#ffffff;dashed=0;opacity=50;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.api_gateway;" vertex="1" parent="1">
+          <mxGeometry x="1010" y="120" width="78" height="78" as="geometry" />
+        </mxCell>
+
+        <!-- User (external) -->
+        <mxCell id="user" value="User" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#232F3E;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.user;" vertex="1" parent="1">
+          <mxGeometry x="1022" y="304" width="52" height="62" as="geometry" />
+        </mxCell>
+
+        <!-- Phase labels -->
+        <mxCell id="pBuild" value="BUILD" style="text;html=1;strokeColor=none;fillColor=#F4F1EA;rounded=1;align=center;fontStyle=1;fontSize=12;fontColor=#6C655C;" vertex="1" parent="1">
+          <mxGeometry x="200" y="500" width="160" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="pTrain" value="TRAIN" style="text;html=1;strokeColor=none;fillColor=#F4F1EA;rounded=1;align=center;fontStyle=1;fontSize=12;fontColor=#6C655C;" vertex="1" parent="1">
+          <mxGeometry x="400" y="500" width="240" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="pDeploy" value="DEPLOY" style="text;html=1;strokeColor=none;fillColor=#F4F1EA;rounded=1;align=center;fontStyle=1;fontSize=12;fontColor=#6C655C;" vertex="1" parent="1">
+          <mxGeometry x="700" y="500" width="388" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- EDGES -->
+        <!-- build (blue dashed) -->
+        <mxCell id="e_ds_s3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#3B6FD4;strokeWidth=2;dashed=1;endArrow=block;endFill=1;" edge="1" parent="1" source="dataset" target="s3raw"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e_nb_s3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#3B6FD4;strokeWidth=2;dashed=1;endArrow=block;endFill=1;" edge="1" parent="1" source="notebook" target="s3raw"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e_nb_tr" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#3B6FD4;strokeWidth=2;dashed=1;endArrow=block;endFill=1;" edge="1" parent="1" source="notebook" target="train"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <!-- training (orange solid) -->
+        <mxCell id="e_s3_glue" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#E8870B;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1" source="s3raw" target="glue"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e_glue_feat" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#E8870B;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1" source="glue" target="s3feat"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e_feat_tr" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#E8870B;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1" source="s3feat" target="train"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e_tr_art" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#E8870B;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1" source="train" target="artifacts"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <!-- serving (green dashed) -->
+        <mxCell id="e_art_dep" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#2C9A63;strokeWidth=2;dashed=1;endArrow=block;endFill=1;" edge="1" parent="1" source="artifacts" target="deploy"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e_dep_mon" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#2C9A63;strokeWidth=2;dashed=1;endArrow=block;endFill=1;" edge="1" parent="1" source="deploy" target="monitor"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e_dep_api" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#2C9A63;strokeWidth=2;dashed=1;endArrow=block;endFill=1;" edge="1" parent="1" source="deploy" target="apigw"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e_api_user" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#2C9A63;strokeWidth=2;dashed=1;endArrow=block;endFill=1;" edge="1" parent="1" source="apigw" target="user"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
